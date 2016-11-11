@@ -16,13 +16,10 @@
     "url": "git+https://github.com/eyasliu/webpack-eslint-plugin.git"
   },
   "keywords": [
-    "redux",
-    "async",
-    "await",
-    "async/await",
-    "async-await",
-    "promise",
-    "middleware"
+    "eslint",
+    "webpack",
+    "plugin",
+    "async"
   ],
   "author": "Eyas",
   "license": "ISC",
