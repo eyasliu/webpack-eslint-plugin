@@ -34,6 +34,11 @@ new EslintPlugin({
 })
 ```
 
+### `beforeOutput`([Function (results)])
+
+before output hook function
+
+
 
 
 

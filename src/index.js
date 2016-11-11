@@ -18,6 +18,7 @@ export default class EslintPlugin {
         compiler.plugin('done', stats => {
             const files = stats.compilation.fileDependencies.filter(item => !~item.indexOf('node_modules') && ~['.js', '.jsx'].indexOf(path.parse(item).ext));            
             const results = CLIEngine.getErrorResults(this.engins.executeOnFiles(files).results);
+            this.options.beforeOutput && this.options.beforeOutput(results);
             this.printResults(results)
         })
     }
