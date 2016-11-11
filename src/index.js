@@ -1,6 +1,8 @@
 /**
  * 异步执行eslint，不会阻塞webpack编译
  */
+import {CLIEngine} from 'eslint'
+
 export default class EslintPlugin {
     constructor(options){
         this.engins = new CLIEngine(options);
