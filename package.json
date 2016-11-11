@@ -1,0 +1,40 @@
+{
+  "name": "webpack-eslint-plugin",
+  "version": "1.0.0",
+  "description": "async run eslint for webpack plugin",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build:lib": "babel src --out-dir lib",
+    "prepublish": "npm run build:lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyasliu/webpack-eslint-plugin.git"
+  },
+  "keywords": [
+    "redux",
+    "async",
+    "await",
+    "async/await",
+    "async-await",
+    "promise",
+    "middleware"
+  ],
+  "author": "Eyas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyasliu/webpack-eslint-plugin/issues"
+  },
+  "homepage": "https://github.com/eyasliu/webpack-eslint-plugin#readme",
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-preset-latest": "^6.16.0"
+  },
+  "dependencies": {
+    "eslint": "^3.9.1"
+  }
+}
