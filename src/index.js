@@ -24,7 +24,7 @@ export default class EslintPlugin {
     printResults(results){
         let formatter;
         try{
-            formatter = this.engins.getFormatter(this.options.format)
+            formatter = typeof this.options.format !== 'function' ? (this.engins.getFormatter(this.options.format)) : this.options.format
         } catch(e) {
             console.log(e.message);
             return false;
