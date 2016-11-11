@@ -6,16 +6,16 @@ import path from 'path'
 
 export default class EslintPlugin {
     constructor(options){
-        this.engins = new CLIEngine(options);
         this.options = Object.assign(
             {
                 format: 'stylish'
             },
             options
         );
+        this.engins = new CLIEngine(this.options);
     }
     apply(compiler){
-        compiler.plugin('done', (stats, cb) => {
+        compiler.plugin('done', stats => {
             const files = stats.compilation.fileDependencies.filter(item => !~item.indexOf('node_modules') && ~['.js', '.jsx'].indexOf(path.parse(item).ext));            
             const results = CLIEngine.getErrorResults(this.engins.executeOnFiles(files).results);
             this.printResults(results)
