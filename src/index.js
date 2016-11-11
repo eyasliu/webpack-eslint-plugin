@@ -2,6 +2,7 @@
  * 异步执行eslint，不会阻塞webpack编译
  */
 import {CLIEngine} from 'eslint'
+import path from 'path'
 
 export default class EslintPlugin {
     constructor(options){
