@@ -26,17 +26,21 @@ module.exports = {
 
 You can pass [eslint](http://eslint.org/docs/developer-guide/nodejs-api#cliengine) options
 
-### `formate`(default: eslint stylish formatter)
+### `format`(default: eslint stylish formatter)
 
 ```js
 new EslintPlugin({
-  formate: require('eslint-friendly-formatter')
+  format: require('eslint-friendly-formatter'),
+  include: ['**/*.js', '**/*.jsx']
 })
 ```
 
 ### `beforeOutput`([Function (results)])
 
 before output hook function
+
+### `include` [string or array]  (default: '**/*.js')
+[minimatch](https://www.npmjs.com/package/minimatch) sync, include dependencies files type
 
 
 

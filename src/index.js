@@ -3,12 +3,20 @@
  */
 import {CLIEngine} from 'eslint'
 import path from 'path'
+import minimatch from 'minimatch'
 
 export default class EslintPlugin {
-    constructor(options){
+    constructor(options = {}){
+        if(options.include && typeof options.include === 'string'){
+            options.include = [options.include]
+        }
         this.options = Object.assign(
             {
-                format: 'stylish'
+                format: 'stylish',
+                include: [
+                    '**/*.js',
+                    '**/*.jsx'
+                ]
             },
             options
         );
@@ -16,7 +24,14 @@ export default class EslintPlugin {
     }
     apply(compiler){
         compiler.plugin('done', stats => {
-            const files = stats.compilation.fileDependencies.filter(item => !~item.indexOf('node_modules') && ~['.js', '.jsx'].indexOf(path.parse(item).ext));            
+            let files = Array.prototype.concat.apply([], this.options.include.map(item => {
+                return stats.compilation.fileDependencies.filter(minimatch.filter(item), {matchBase: true})
+            }))
+            files = (files => {
+                let tmp = []
+                files.forEach(i => !~tmp.indexOf(i) && tmp.push(i))
+                return tmp
+            })(files)         
             const results = CLIEngine.getErrorResults(this.engins.executeOnFiles(files).results);
             this.options.beforeOutput && this.options.beforeOutput(results);
             this.printResults(results)
